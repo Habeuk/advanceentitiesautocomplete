@@ -45,6 +45,7 @@ class EntityAutocompleteController extends EntityAutocompleteControllerBase {
    *         or if it does not match the stored data.
    */
   public function handleAutocomplete(Request $request, $target_type, $selection_handler, $selection_settings_key) {
+    
     /**
      * Pour gagner en temps, on va recherche les paragraphes avec l'id et le
      * reste sans chanegement.
@@ -52,6 +53,7 @@ class EntityAutocompleteController extends EntityAutocompleteControllerBase {
      * @var array $matches
      */
     if ($target_type == 'paragraph') {
+      $matches = [];
       // Get the typed string from the URL, if it exists.
       if ($input = $request->query->get('q')) {
         $tag_list = Tags::explode($input);

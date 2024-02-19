@@ -16,8 +16,19 @@ class Advanceentitiesautocomplete {
    */
   public static function processEntityAutocompleteCustom(array &$element, FormStateInterface $form_state, array &$complete_form) {
     $element['#autocomplete_route_name'] = 'advanceentitiesautocomplete.entity_autocomplete';
-    if (!empty($element['#attributes']['data-autocomplete-path']))
-      $element['#attributes']['data-autocomplete-path'] = "/advanceentitiesautocomplete" . $element['#attributes']['data-autocomplete-path'];
+    $url = '';
+    if (\Drupal::languageManager()->isMultilingual()) {
+      $languageId = \Drupal::languageManager()->getCurrentLanguage()->getId();
+      $url .= '/' . $languageId;
+    }
+    if (!empty($element['#attributes']['data-autocomplete-path'])) {
+      $taget_type = $element['#autocomplete_route_parameters']['target_type'];
+      $selection_handler = $element['#autocomplete_route_parameters']['selection_handler'];
+      $taget_type = $element['#autocomplete_route_parameters']['target_type'];
+      $selection_settings_key = $element['#autocomplete_route_parameters']['selection_settings_key'];
+      $url .= '/advanceentitiesautocomplete/entity_reference_autocomplete/' . $taget_type . '/' . $selection_handler . '/' . $selection_settings_key;
+      $element['#attributes']['data-autocomplete-path'] = $url;
+    }
     return $element;
   }
   

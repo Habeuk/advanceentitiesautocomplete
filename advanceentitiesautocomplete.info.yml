@@ -2,4 +2,4 @@ name: 'advanceentitiesautocomplete'
 type: module
 description: 'Permet de faire les recherches plus precise'
 package: Custom
-core_version_requirement: ^10
+core_version_requirement: ^9 | ^10
