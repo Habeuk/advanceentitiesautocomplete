@@ -1,0 +1,6 @@
+advanceentitiesautocomplete.entity_autocomplete:
+  path: '/advanceentitiesautocomplete/entity_reference_autocomplete/{target_type}/{selection_handler}/{selection_settings_key}'
+  defaults:
+    _controller: '\Drupal\advanceentitiesautocomplete\Controller\EntityAutocompleteController::handleAutocomplete'
+  requirements:
+    _access: 'TRUE'

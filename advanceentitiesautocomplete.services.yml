@@ -1,0 +1,5 @@
+services:
+  advanceentitiesautocomplete.system.entity_autocomplete:
+    class: Drupal\advanceentitiesautocomplete\Routing\RouteSubscriber
+    tags:
+      - { name: event_subscriber, priority: 90 }

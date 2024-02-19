@@ -1,0 +1,14 @@
+{
+    "name": "habeuk/advanceentitiesautocomplete",
+    "description": "permet de filtrer les entites de references par id",
+    "type": "drupal-custom-module",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "kouwa stephane",
+            "email": "kksasteph888@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}

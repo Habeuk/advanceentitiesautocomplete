@@ -1,0 +1,53 @@
+<?php
+use Drupal\advanceentitiesautocomplete\Advanceentitiesautocomplete;
+
+/**
+ *
+ * @file
+ * Primary module hooks for advanceentitiesautocomplete module.
+ */
+
+/**
+ * implement hook_field_widget_WIDGET_TYPE_form_alter
+ *
+ * @see Drupal\Core\Field\Plugin\Field\FieldWidget\EntityReferenceAutocompleteWidget
+ */
+// function
+// advanceentitiesautocomplete_field_widget_entity_reference_autocomplete_form_alter(&$element,
+// \Drupal\Core\Form\FormStateInterface $form_state, $context) {
+// $element['#autocomplete_route_name'] =
+// 'advanceentitiesautocomplete.entity_autocomplete';
+// }
+
+/**
+ * Implements hook_element_info_alter().
+ */
+function advanceentitiesautocomplete_element_info_alter(&$type) {
+  if (isset($type['entity_autocomplete'])) {
+    $type['entity_autocomplete']['#process'][] = [
+      Advanceentitiesautocomplete::class,
+      'processEntityAutocompleteCustom'
+    ];
+  }
+}
+
+function advanceentitiesautocomplete_preprocess_input(&$variables) {
+  if (!empty($variables['element']['#type']) && $variables['element']['#type'] == 'entity_autocomplete') {
+    // $variables['element']['#autocomplete_route_name'] =
+    // 'advanceentitiesautocomplete.entity_autocomplete';
+    // $variables['#autocomplete_route_name'] =
+    // 'advanceentitiesautocomplete.entity_autocomplete';
+    // $variables['element']['#process'][] = [
+    // Advanceentitiesautocomplete::class,
+    // 'processEntityAutocompleteCustom'
+    // ];
+    // $variables['#process'][] = [
+    // Advanceentitiesautocomplete::class,
+    // 'processEntityAutocomplete'
+    // ];
+    // \Stephane888\Debug\debugLog::$max_depth = 5;
+    // \Stephane888\Debug\debugLog::kintDebugDrupal($variables,
+    // 'advanceentitiesautocomplete_preprocess_input', true);
+  }
+}
+
